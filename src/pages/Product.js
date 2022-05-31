@@ -25,12 +25,10 @@ const Product = () => {
         x._id === item._id ? { ...isExisted, qty: isExisted.qty + 1 } : x
       );
       setCartItems((p) => (p = addedItem));
-      // setValue(cartItems);
     } else {
       addedItem = [...cartItems, { ...item, qty: 1 }];
       setCartItems((p) => (p = addedItem));
     }
-    // setValue((p) => (p = cartItems));
   };
 
   //  <!-- section: function to increase item count in cart -->
@@ -39,14 +37,12 @@ const Product = () => {
     const exist = cartItems.find((x) => x._id === item._id);
     if (exist.qty === 1) {
       setCartItems(cartItems.filter((x) => x._id !== item._id));
-      // setCartItems([]);
     } else {
       setCartItems(
         cartItems.map((x) =>
           x._id === item._id ? { ...exist, qty: exist.qty - 1 } : x
         )
       );
-      // setValue((p) => (p = cartItems));
     }
   };
 
@@ -57,7 +53,6 @@ const Product = () => {
     if (isExisted) {
       setCartItems(cartItems.filter((x) => x._id !== item._id));
     }
-    // setValue((p) => (p = cartItems));
   };
 
   useEffect(() => {
@@ -73,7 +68,7 @@ const Product = () => {
           <>
             <div className="px-2">
               <div className="relative flex items-center justify-between h-16">
-                {/* Mobile menu button*/}
+                {/* section: Mobile menu button*/}
                 <Disclosure.Button className="z-50 inline-flex items-center justify-center p-2 text-gray-400 rounded-md lg:hidden hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
