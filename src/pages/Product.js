@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Cart from "../layout/cart/Cart";
 
 import { Disclosure } from "@headlessui/react";
@@ -8,12 +8,14 @@ import ProductSection from "../layout/productSection/ProductSection";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const Product = () => {
-  const [cartItems, setCartItems] = useState(() => {
-    const storedData = JSON.parse(localStorage.getItem("cartItems"));
-    if (storedData) {
-      return storedData;
-    } else return [];
-  });
+  // const [cartItems, setCartItems] = useState(() => {
+  //   const storedData = JSON.parse(localStorage.getItem("cartItems"));
+  //   if (storedData) {
+  //     return storedData;
+  //   } else return [];
+  // });
+
+  const [cartItems, setCartItems] = useLocalStorage("cartItems", []);
 
   //  <!-- section: function to add & increase items in cart -->
   const addItem = (item) => {
@@ -55,10 +57,10 @@ const Product = () => {
     }
   };
 
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    return () => {};
-  }, [cartItems]);
+  // useEffect(() => {
+  //   localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  //   return () => {};
+  // }, [cartItems]);
 
   return (
     <>
